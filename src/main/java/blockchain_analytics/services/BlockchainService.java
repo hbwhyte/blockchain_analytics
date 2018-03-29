@@ -12,8 +12,8 @@ public class BlockchainService {
     @Autowired
     RestTemplate restTemplate;
 
-    public BlockchainResponse connect() {
-        String fQuery = "https://api.blockcypher.com/v1/btc/main";
+    public BlockchainResponse connect(String coin) {
+        String fQuery = "https://api.blockcypher.com/v1/"+coin+"/main";
 
         ResponseEntity<BlockchainResponse> responseEntity =
                 restTemplate.getForEntity(fQuery, BlockchainResponse.class);
@@ -22,4 +22,6 @@ public class BlockchainService {
 
         return response;
     }
+
+
 }

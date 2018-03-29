@@ -6,6 +6,7 @@ import blockchain_analytics.services.BlockchainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -16,8 +17,9 @@ public class BlockchainController {
     BlockchainService blockchainService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/")
-    public BlockchainResponse connect() {
-        return blockchainService.connect();
+    public BlockchainResponse connect(@RequestParam(value="coin", defaultValue="btc") String coin) {
+        return blockchainService.connect(coin);
     }
+
 
 }
